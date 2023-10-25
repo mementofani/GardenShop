@@ -1,0 +1,22 @@
+{
+  "name": "gardenshop",
+  "version": "1.0.0",
+  "description": "Garden shop project.",
+  "main": "products.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mementofani/GardenShop.git"
+  },
+  "keywords": [
+    "GardenShop"
+  ],
+  "author": "Alihan Sencan, Ulas Altintas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mementofani/GardenShop/issues"
+  },
+  "homepage": "https://github.com/mementofani/GardenShop#readme"
+}
