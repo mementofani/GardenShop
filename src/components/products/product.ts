@@ -10,4 +10,18 @@ export class Product {
         this.code = Product.id;
         Product.id++;
     }
+
+    getName() {
+        return this.name;
+    }
+
+    getCode() {
+        return this.code;
+    }
+
+    toString() {
+        return `Product name: ${this.name} code: ${this.code}`;
+    }
+
+    
 }
