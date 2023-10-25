@@ -3,7 +3,7 @@ class GoatFertilizer extends Fertilizer {
         super(weight);
     }
     toString() {
-        return `Goat Fertilizer weight: ${this.weight}`;
+        return `Goat Fertilizer weight: ${this.getweight()}`;
     }
 
 }

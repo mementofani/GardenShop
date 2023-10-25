@@ -1,9 +1,13 @@
 export class Product {
-    static id :Number = 0;
-    name: String;
-    code: String;
-    constructor(name : String,code: Number){
-        name = name;
-        code = code;
+    private static id : number = 1;
+
+    private name: String;
+
+   private code: number;
+
+    constructor(name : String){
+        this.name = name;
+        this.code = Product.id;
+        Product.id++;
     }
 }

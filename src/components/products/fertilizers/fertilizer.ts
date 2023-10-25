@@ -2,13 +2,14 @@
 //
 class Fertilizer {
 
-    #weight: number;
+     private weight: number;
 
     constructor(weight: number) {
-        this.#weight = weight;
+        this.weight = weight;
     }
-    get weight() {
-        return this.#weight;
+
+    getweight() {
+        return this.weight;
     }
     
 }
