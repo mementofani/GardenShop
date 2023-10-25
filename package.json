@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/mementofani/GardenShop/issues"
   },
-  "homepage": "https://github.com/mementofani/GardenShop#readme"
+  "homepage": "https://github.com/mementofani/GardenShop#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
