@@ -11,6 +11,10 @@ class Fertilizer {
     getweight() {
         return this.weight;
     }
+    toString() {
+        return `Fertilizer weight: ${this.getweight()}`;
+    }
+
     
 }
 
