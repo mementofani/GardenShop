@@ -1,6 +1,6 @@
 //
 //
-class Fertilizer {
+export class Fertilizer {
 
      private weight: number;
 
