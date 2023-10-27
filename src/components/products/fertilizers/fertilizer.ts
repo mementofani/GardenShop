@@ -1,5 +1,5 @@
-//
-//
+
+
 export class Fertilizer {
 
      private weight: number;
