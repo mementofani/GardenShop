@@ -24,30 +24,30 @@ function addProduct(element) {
     let sqlString: String[];
     if(element instanceof Plant){
 
-    sqlString = ['plant', '',element.getColor +'',''];
+    sqlString = [element.getCode +'','plant', '',element.getColor +'',''];
     if(element instanceof Tree){
-      sqlString[1] = 'tree';
+      sqlString[2] = 'tree';
 
     } else if(element instanceof Algeae){
 
-        sqlString[1] = 'algeae'
+        sqlString[2] = 'algeae'
     } else if(element instanceof Flower){
-        sqlString[1] = 'flower'
+        sqlString[2] = 'flower'
     } 
     }
      else{ 
-         sqlString = ['fertilizer', '', '',element.weight]
+         sqlString = [element.getCode+'','fertilizer', '', '',element.weight]
         if(element instanceof GoatFertilizer){
-            sqlString[1] =  'goatFertilizer'
+            sqlString[2] =  'goatFertilizer'
 
     } else if(element instanceof SheepFertilizer){
-            sqlString[1] = 'sheepFertilizer'
+            sqlString[2] = 'sheepFertilizer'
     }}
     
     const query = "INSERT INTO products (name, type, color, weight) VALUES (?, ?)";
-    connection.query(query, [sqlString[0], sqlString[1],sqlString[2],sqlString[3]], (err, results) => {
+    connection.query(query, [sqlString[0], sqlString[1],sqlString[2],sqlString[3],sqlString[4]], (err, results) => {
         if (err) throw err;
-        console.log(`Added product: ${sqlString[0]} with type: ${sqlString[1]} with color: ${sqlString[2]} with weight: ${sqlString[3]}`);
+        console.log(`Added product: ${sqlString[1]} with type: ${sqlString[2]} with color: ${sqlString[3]} with weight: ${sqlString[4]}`);
     });
 }
 
