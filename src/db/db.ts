@@ -24,7 +24,7 @@ function addProduct(element) {
     let sqlString: String[];
     if(element instanceof Plant){
 
-    sqlString = ['plant', '',element.color,''];
+    sqlString = ['plant', '',element.getColor +'',''];
     if(element instanceof Tree){
       sqlString[1] = 'tree';
 
