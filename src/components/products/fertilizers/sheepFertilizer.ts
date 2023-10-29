@@ -1,6 +1,6 @@
 import { Fertilizer } from "./fertilizer";
 
-class SheepFertilizer extends Fertilizer {
+export class SheepFertilizer extends Fertilizer {
     constructor(weight: number) {
         super(weight);
     }
