@@ -29,27 +29,21 @@ constructor(){
 };
 
 
-
-
-
 addProduct(element) {
     
     let sqlString: String[];
-    if(element instanceof Plant){
-
-    sqlString = [element.getCode +'','plant', '',element.getColor +'',''];
-    if(element instanceof Tree){
-      sqlString[2] = 'tree';
-
-    } else if(element instanceof Algeae){
-
-        sqlString[2] = 'algeae'
-    } else if(element instanceof Flower){
-        sqlString[2] = 'flower'
-    } 
+    if (element instanceof Plant) {
+        sqlString = [element.getCode.toString(), 'plant', '', element.getColor.toString(), ''];
+        if (element instanceof Tree) {
+            sqlString[2] = 'tree';
+        } else if (element instanceof Algeae) {
+            sqlString[2] = 'algeae';
+        } else if (element instanceof Flower) {
+            sqlString[2] = 'flower';
+        }
     }
      else{ 
-         sqlString = [element.getCode+'','fertilizer', '', '',element.weight]
+         sqlString = [element.getCode.toString(),'fertilizer', '', '',element.weight.toString()]
         if(element instanceof GoatFertilizer){
             sqlString[2] =  'goatFertilizer'
 
