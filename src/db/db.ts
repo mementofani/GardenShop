@@ -59,6 +59,12 @@ addProduct(element) {
     });
 }
 
-
+removeProductByCode(productCode) {
+    const db = "DELETE FROM products WHERE code = ?";
+    this.connection.query(db, [productCode], (err, results) => {
+        if (err) throw err;
+        console.log(`Removed product with code: ${productCode}`);
+    });
+}
 
 }
