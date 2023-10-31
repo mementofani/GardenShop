@@ -51,7 +51,7 @@ addProduct(element) {
             sqlString[2] = 'sheepFertilizer'
     }}
     
-    const db = "INSERT INTO products (name, type, color, weight) VALUES (?, ?, ?, ?, ?)";
+    const db = "INSERT INTO products (code, name, type, color, weight) VALUES (?, ?, ?, ?, ?)";
 
     this.connection.query(db, [sqlString[0], sqlString[1],sqlString[2],sqlString[3],sqlString[4]], (err, results) => {
         if (err) throw err;
@@ -65,6 +65,17 @@ removeProductByCode(productCode) {
         if (err) throw err;
         console.log(`Removed product with code: ${productCode}`);
     });
+}
+
+//search product method
+searchProductByCode(productCode) {
+const db = "SELECT * FROM products WHERE code = ?";
+this.connection.query(db, [productCode], (err, results) => {
+    if (err) throw err;
+    console.log(`Found product with code: ${productCode}`);
+    
+});
+
 }
 
 }
