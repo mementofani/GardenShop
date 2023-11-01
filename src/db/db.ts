@@ -29,20 +29,21 @@ export class Database {
             const type = element instanceof Tree ? 'tree' :
                 element instanceof Algeae ? 'algeae' :
                 element instanceof Flower ? 'flower' : '';
-            return [element.getCode.toString(), 'plant', type, element.getColor.toString(), ''];
+            return [element.getCode.toString(), 'plant', type, element.getColor.toString(), '', element.getAmount.toString()];
         } else {
             const type = element instanceof GoatFertilizer ? 'goatFertilizer' :
                 element instanceof SheepFertilizer ? 'sheepFertilizer' : '';
-            return [element.getCode.toString(), 'fertilizer', type, '', element.weight.toString()];
+            return [element.getCode.toString(), 'fertilizer', type, '', element.getWeight.toString(), element.getAmount.toString()];
         }
     }
 
     addProduct(element: Product) {
         const sqlString = this.constructProductSQL(element);
-        const db = "INSERT INTO products (code, name, type, color, weight) VALUES (?, ?, ?, ?, ?)";
+        const db = "INSERT INTO products (code, name, type, color, weight, amount) VALUES (?, ?, ?, ?, ?, ?)";
         this.connection.query(db, sqlString, (err) => {
             if (err) throw err;
-            console.log(`Added product: ${sqlString[1]} with type: ${sqlString[2]} with color: ${sqlString[3]} with weight: ${sqlString[4]}`);
+            console.log(`Added product: ${sqlString[1]} with type: ${sqlString[2]} with color:
+             ${sqlString[3]} with weight: ${sqlString[4]} and the amount ${sqlString[5]}`);
         });
     }
 
