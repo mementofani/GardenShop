@@ -5,6 +5,7 @@ import { Flower } from '../components/products/plants/flower'
 import { Tree } from '../components/products/plants/tree'
 import { GoatFertilizer } from '../components/products/fertilizers/goatFertilizer'
 import { SheepFertilizer } from '../components/products/fertilizers/sheepFertilizer'
+import { Product } from '../components/products/product'
 
 export class Database {
     private connection;
@@ -36,7 +37,7 @@ export class Database {
         }
     }
 
-    addProduct(element) {
+    addProduct(element: Product) {
         const sqlString = this.constructProductSQL(element);
         const db = "INSERT INTO products (code, name, type, color, weight) VALUES (?, ?, ?, ?, ?)";
         this.connection.query(db, sqlString, (err) => {
@@ -54,27 +55,27 @@ export class Database {
         });
     }
 
-    removeProductByCode(productCode) {
+    removeProductByCode(productCode : string) {
         this.executeQuery("DELETE FROM products WHERE code = ?", productCode, `Removed product with code: ${productCode}`);
     }
 
-    searchProductByCode(productCode) {
+    searchProductByCode(productCode :string) {
         this.executeQuery("SELECT * FROM products WHERE code = ?", productCode, `Found product with code: ${productCode}`);
     }
 
-    filterProductByName(productName) {
+    filterProductByName(productName : string) {
         this.executeQuery("SELECT * FROM products WHERE name = ?", productName, `Found product(s) with name: ${productName}`);
     }
 
-    filterProductByType(productType) {
+    filterProductByType(productType :string) {
         this.executeQuery("SELECT * FROM products WHERE type = ?", productType, `Found product(s) with type: ${productType}`);
     }
 
-    filterProductByColor(productColor) {
-        this.executeQuery("SELECT * FROM products WHERE color = ?", productColor, `Found product(s) with color: ${productColor}`);
+    filterProductByColor(productColor : number) {
+        this.executeQuery("SELECT * FROM products WHERE color = ?", productColor.toString(), `Found product(s) with color: ${productColor}`);
     }
 
-    filterProductByWeight(productWeight) {
-        this.executeQuery("SELECT * FROM products WHERE weight = ?", productWeight, `Found product(s) with weight: ${productWeight}`);
+    filterProductByWeight(productWeight : number) {
+        this.executeQuery("SELECT * FROM products WHERE weight = ?", productWeight.toString(), `Found product(s) with weight: ${productWeight}`);
     }
 }
