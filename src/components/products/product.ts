@@ -5,10 +5,17 @@ export class Product {
 
    private code: number;
 
-    constructor(name : String){
+   private amount: number;
+
+    constructor(name : String, amount : number) {
         this.name = name;
         this.code = Product.id;
         Product.id++;
+        this.amount = amount;
+    }
+
+    getAmount() {
+        return this.amount;
     }
 
     getName() {
