@@ -50,9 +50,9 @@ export class Database {
     updateProductWeight(productCode: number, weight: number){
       let updateQuery = 'UPDATE * SET weight = ? WHERE code = ?';
       
-      const updateValues = [weight, productCode];
+      const updateValues = [weight  +'', productCode + ''];
       
-      this.executeQuery
+      this.executeQuery(updateQuery, updateValues, `Updated ${productCode} with weight ${weight}`  );
 
        
     }
