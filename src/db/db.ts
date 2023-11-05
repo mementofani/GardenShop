@@ -71,27 +71,27 @@ export class Database {
     }
 
     removeProductByCode(productCode : string) {
-        this.executeQuery("DELETE FROM products WHERE code = ?", productCode, `Removed product with code: ${productCode}`);
+        this.executeQuery("DELETE FROM products WHERE code = ?", [productCode], `Removed product with code: ${productCode}`);
     }
 
     searchProductByCode(productCode :string) {
-        this.executeQuery("SELECT * FROM products WHERE code = ?", productCode, `Found product with code: ${productCode}`);
+        this.executeQuery("SELECT * FROM products WHERE code = ?", [productCode], `Found product with code: ${productCode}`);
     }
 
     filterProductByName(productName : string) {
-        this.executeQuery("SELECT * FROM products WHERE name = ?", productName, `Found product(s) with name: ${productName}`);
+        this.executeQuery("SELECT * FROM products WHERE name = ?", [productName], `Found product(s) with name: ${productName}`);
     }
 
     filterProductByType(productType :string) {
-        this.executeQuery("SELECT * FROM products WHERE type = ?", productType, `Found product(s) with type: ${productType}`);
+        this.executeQuery("SELECT * FROM products WHERE type = ?", [productType], `Found product(s) with type: ${productType}`);
     }
 
     filterProductByColor(productColor : number) {
-        this.executeQuery("SELECT * FROM products WHERE color = ?", productColor.toString(), `Found product(s) with color: ${productColor}`);
+        this.executeQuery("SELECT * FROM products WHERE color = ?", [productColor.toString()], `Found product(s) with color: ${productColor}`);
     }
 
     filterProductByWeight(productWeight : number) {
-        this.executeQuery("SELECT * FROM products WHERE weight = ?", productWeight.toString(), `Found product(s) with weight: ${productWeight}`);
+        this.executeQuery("SELECT * FROM products WHERE weight = ?", [productWeight.toString()], `Found product(s) with weight: ${productWeight}`);
     }
 
 }
