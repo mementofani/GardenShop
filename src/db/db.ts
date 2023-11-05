@@ -46,15 +46,23 @@ export class Database {
              ${sqlString[3]} with weight: ${sqlString[4]} and the amount ${sqlString[5]}`);
         });
     }
-    updateProductWeight(){
 
+    updateProductWeight(productCode: number, weight: number){
+      let updateQuery = 'UPDATE * SET weight = ? WHERE code = ?';
+      
+      const updateValues = [weight, productCode];
+      
+      this.executeQuery
+
+       
     }
+
     updateProductAmount(){
 
     }
 
-    private executeQuery(query: string, param: string, successMsg: string) {
-        this.connection.query(query, [param], (err, results) => {
+    private executeQuery(query: string, param: string[], successMsg: string) {
+        this.connection.query(query, param, (err, results) => {
             if (err) throw err;
             if (results === null) return 'Found Nothing';
             console.log(successMsg);
