@@ -46,6 +46,12 @@ export class Database {
              ${sqlString[3]} with weight: ${sqlString[4]} and the amount ${sqlString[5]}`);
         });
     }
+    updateProductWeight(){
+
+    }
+    updateProductAmount(){
+
+    }
 
     private executeQuery(query: string, param: string, successMsg: string) {
         this.connection.query(query, [param], (err, results) => {
@@ -79,4 +85,5 @@ export class Database {
     filterProductByWeight(productWeight : number) {
         this.executeQuery("SELECT * FROM products WHERE weight = ?", productWeight.toString(), `Found product(s) with weight: ${productWeight}`);
     }
+
 }
