@@ -87,9 +87,14 @@ export class Database {
        
     }
 
-    updateProductAmount(){
+    
+    updateProductAmount(productCode: number, newAmount: number){
+        const updateQuery = 'UPDATE * SET amount = ? where code = ?'
+        const updateValues = [newAmount + '', productCode + '']
+        this.executeQuery(updateQuery, updateValues, `Updated ${productCode} with amount ${newAmount}`  );
 
     }
+
 
     private executeQuery(query: string, param: string[], successMsg: string) {
         this.connection.query(query, param, (err, results) => {
