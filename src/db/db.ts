@@ -6,9 +6,10 @@ import { Tree } from '../components/products/plants/tree'
 import { GoatFertilizer } from '../components/products/fertilizers/goatFertilizer'
 import { SheepFertilizer } from '../components/products/fertilizers/sheepFertilizer'
 import { Product } from '../components/products/product'
+import { Fertilizer } from '../components/products/fertilizers/fertilizer';
 
 export class Database {
-    private connection;
+    private connection : mysql.Connection;
 
     constructor() {
         this.connection = mysql.createConnection({
@@ -17,7 +18,7 @@ export class Database {
             user: 'root',
             password: '<PASSWORD>'
         });
-        this.connection.connect((err) => {
+        this.connection.connect((err: Error) => {
             if (err) throw err;
             console.log('connected as id' + this.connection.threadId);
             this.createDatabase();
@@ -25,10 +26,10 @@ export class Database {
     }
 
     createDatabase() {
-        this.connection.query('CREATE DATABASE IF NOT EXISTS products_db', (err) => {
+        this.connection.query('CREATE DATABASE IF NOT EXISTS products_db', (err : Error) => {
             if (err) throw err;
             console.log('Database created or already exists.');
-            this.connection.changeUser({database: 'products_db'}, (err) => {
+            this.connection.changeUser({database: 'products_db'}, (err: Error) => {
                 if (err) throw err;
                 this.createTables();
             });
@@ -54,7 +55,7 @@ export class Database {
         });
     }
 
-    private constructProductSQL(element): string[] {
+    private constructProductSQL(element : Product): string[] {
         if (element instanceof Plant) {
             const type = element instanceof Tree ? 'tree' :
                 element instanceof Algeae ? 'algeae' :
@@ -63,6 +64,7 @@ export class Database {
         } else {
             const type = element instanceof GoatFertilizer ? 'goatFertilizer' :
                 element instanceof SheepFertilizer ? 'sheepFertilizer' : '';
+                let fertilizer: Fertilizer = element;
             return [element.getCode.toString(), 'fertilizer', type, '', element.getWeight.toString(), element.getAmount.toString()];
         }
     }
