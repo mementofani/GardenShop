@@ -55,7 +55,7 @@ export class Database {
         });
     }
 
-    private constructProductSQL(element : Product): string[] {
+    private constructProductSQL(element : Product): string[] | undefined {
         if (element instanceof Plant) {
             const type = element instanceof Tree ? 'tree' :
                 element instanceof Algeae ? 'algeae' :
@@ -66,11 +66,14 @@ export class Database {
                 element instanceof SheepFertilizer ? 'sheepFertilizer' : '';
                 
             return [element.getCode.toString(), 'fertilizer', type, '', element.getweight.toString(), element.getAmount.toString()];
-        }
+        } 
     }
 
     addProduct(element: Product) {
         const sqlString = this.constructProductSQL(element);
+        if(sqlString === undefined){
+            return 'Error';
+        }
         const db = "INSERT INTO products (code, name, type, color, weight, amount) VALUES (?, ?, ?, ?, ?, ?)";
         this.connection.query(db, sqlString, (err) => {
             if (err) throw err;
