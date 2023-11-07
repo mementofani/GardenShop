@@ -15,12 +15,42 @@ export class Database {
             host: 'localhost',
             port: 3306,
             user: 'root',
-            password: '<PASSWORD>',
-            database: 'products_db'
+            password: '<PASSWORD>'
         });
         this.connection.connect((err) => {
             if (err) throw err;
             console.log('connected as id' + this.connection.threadId);
+            this.createDatabase();
+        });
+    }
+
+    createDatabase() {
+        this.connection.query('CREATE DATABASE IF NOT EXISTS products_db', (err) => {
+            if (err) throw err;
+            console.log('Database created or already exists.');
+            this.connection.changeUser({database: 'products_db'}, (err) => {
+                if (err) throw err;
+                this.createTables();
+            });
+        });
+    }
+
+    createTables() {
+        const productsTable = `
+            CREATE TABLE IF NOT EXISTS products (
+                code VARCHAR(255) NOT NULL,
+                name VARCHAR(255),
+                type VARCHAR(255),
+                color VARCHAR(255),
+                weight DECIMAL(10, 2),
+                amount INT,
+                PRIMARY KEY (code)
+            )
+        `;
+
+        this.connection.query(productsTable, (err, results, fields) => {
+            if (err) throw err;
+            console.log('Tables created or already exist.');
         });
     }
 
