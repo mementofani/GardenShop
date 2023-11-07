@@ -61,11 +61,11 @@ export class Database {
                 element instanceof Algeae ? 'algeae' :
                 element instanceof Flower ? 'flower' : '';
             return [element.getCode.toString(), 'plant', type, element.getColor.toString(), '', element.getAmount.toString()];
-        } else {
+        } else if(element instanceof Fertilizer) {
             const type = element instanceof GoatFertilizer ? 'goatFertilizer' :
                 element instanceof SheepFertilizer ? 'sheepFertilizer' : '';
-                let fertilizer: Fertilizer = element;
-            return [element.getCode.toString(), 'fertilizer', type, '', element.getWeight.toString(), element.getAmount.toString()];
+                
+            return [element.getCode.toString(), 'fertilizer', type, '', element.getweight.toString(), element.getAmount.toString()];
         }
     }
 
