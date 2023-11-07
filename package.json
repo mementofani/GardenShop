@@ -2,9 +2,10 @@
   "name": "gardenshop",
   "version": "1.0.0",
   "description": "Garden shop project.",
-  "main": "products.js",
+  "main": "db.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./src/db/db.ts"
   },
   "repository": {
     "type": "git",
