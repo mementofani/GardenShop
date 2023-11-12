@@ -1,8 +1,8 @@
 import { Fertilizer } from "./fertilizer";
 
 export class SheepFertilizer extends Fertilizer {
-    constructor(weight: number) {
-        super(weight);
+    constructor(name: string, amount: number, weight: number) {
+        super(name,amount,weight);
     }
  
 }

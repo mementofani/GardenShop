@@ -133,5 +133,11 @@ export class Database {
     filterProductByWeight(productWeight : number) {
         this.executeQuery("SELECT * FROM products WHERE weight = ?", [productWeight.toString()], `Found product(s) with weight: ${productWeight}`);
     }
+    
 
 }
+
+    let db = new Database();
+    
+
+    

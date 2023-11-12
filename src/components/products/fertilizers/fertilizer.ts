@@ -1,10 +1,12 @@
+import { Product } from "../product";
 
 
-export class Fertilizer {
+export class Fertilizer extends Product {
 
      private weight: number;
 
-    constructor(weight: number) {
+    constructor(name: string, amount: number, weight: number) {
+        super(name,amount);
         this.weight = weight;
     }
 
